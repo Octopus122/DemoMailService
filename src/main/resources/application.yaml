@@ -12,16 +12,6 @@ spring:
 #          auth: true
 #        smtp.starttls.enable: true
   kafka:
-#    producer:
-#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-#      bootstrap-servers: localhost:29092
-#      properties:
-#        spring:
-#          json:
-#            add:
-#              type:
-#                headers: false
     consumer:
       bootstrap-servers: localhost:29092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
