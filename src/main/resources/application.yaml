@@ -1,16 +1,20 @@
 spring:
   config:
     import: optional:file:.env[.properties]
-#  mail:
-#    host: smtp.mail.ru
-#    port: 465
-#    username: ${SMTP_USERNAME}
-#    password: ${SMTP_PASSWORD}
-#    properties:
-#      mail:
-#        smtp:
-#          auth: true
-#        smtp.starttls.enable: true
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT_TLS}
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: false
+          ssl:
+            enable: true
+          ssl.trust: ${SMTP_HOST}
+      debug: true
   kafka:
     consumer:
       bootstrap-servers: localhost:29092
@@ -18,10 +22,11 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.value.default.type: com.example.mail_service.dto.KafkaMessageDto  # Полный путь!
-        spring.json.trusted.packages: "com.example.mail_service.dto"  # Только нужные пакеты
+        spring.json.trusted.packages: com.example.mail_service.dto  # Только нужные пакеты
         spring.json.add.type.headers: false
 topics:
   user-topic: email-message-topic
 
 server:
-  frontend-url: http://localhost:4200
+#  frontend-url: http://localhost:4201
+  port: 8081
