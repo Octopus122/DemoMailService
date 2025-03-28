@@ -29,6 +29,12 @@ dependencies {
 
 	implementation("com.fasterxml.jackson.core:jackson-databind")  // Для JsonSerializer
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	//Coroutines
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+//	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
 }
 
 kotlin {
